@@ -44,10 +44,17 @@ class BlogPost extends Component{
     }
 
     handleTombolSimpan = () => {
-        API.postNewsBlog(this.state.insertArtikel)
+        fetch('http://localhost:3001/posts', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state.insertArtikel)
+        })
             .then((response) => {
                 this.ambilDataDariServerAPI()
-            });
+            })
     }
 
     render() {
