@@ -9,7 +9,7 @@ import BlogPost from "./container/BlogPost/BlogPost";
 import PostMahasiswa from "./container/PostMahasiswa/PostMahasiswa";
 
 ReactDOM.render(
-  <PostMahasiswa/>,
+  <BlogPost/>,
   document.getElementById('content')
 );
 

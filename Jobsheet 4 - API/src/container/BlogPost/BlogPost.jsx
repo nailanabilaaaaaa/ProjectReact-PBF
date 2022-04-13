@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './BlogPost.css';
-import Post from "../../component/BlogPost/Post"
+import Post from "../../component/BlogPost/Post";
+import API from "../../services/index.js";
 
 class BlogPost extends Component{
     state = {
@@ -14,13 +15,11 @@ class BlogPost extends Component{
     }
 
     ambilDataDariServerAPI = () => {
-        fetch('http://localhost:3001/posts?_sort=id&_order=desc')
-            .then(response => response.json())
-            .then(result => {
-                this.setState({
-                    listArtikel: result
-                })
+        API.getNewsBlog().then(result => {
+            this.setState({
+                listArtikel: result
             })
+        })
     }
 
     componentDidMount() {
@@ -45,17 +44,10 @@ class BlogPost extends Component{
     }
 
     handleTombolSimpan = () => {
-        fetch('http://localhost:3001/posts', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state.insertArtikel)
-        })
+        API.postNewsBlog(this.state.insertArtikel)
             .then((response) => {
                 this.ambilDataDariServerAPI()
-            })
+            });
     }
 
     render() {
