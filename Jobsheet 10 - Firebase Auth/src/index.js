@@ -5,6 +5,7 @@ import routes from "./routes.js";
 import Header from "./Header";
 import './styles.css';
 import firebase from 'firebase';
+import "firebase/auth";
 import firebaseConfig from "./firebase.config";
 import reportWebVitals from "./reportWebVitals"
 
